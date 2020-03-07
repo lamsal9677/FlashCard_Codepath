@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#989898"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/Que"
+        android:layout_width="400dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+
+        android:layout_height="200dp"
+        android:background="@drawable/question"
+        android:text="Who was the first man to fly to the space"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        android:gravity="center"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/Ans1"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="300dp"
+        android:background="@drawable/shape"
+        android:elevation="8dp"
+        android:gravity="center"
+        android:text="Neil Armstrong"
+        android:textAlignment="center"
+        android:textSize="25sp" />
+
+
+    <TextView
+        android:id="@+id/Ans2"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="235dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="300dp"
+        android:background="@drawable/shape"
+        android:elevation="8dp"
+        android:gravity="center"
+        android:text="Yuri Gagarin"
+        android:textAlignment="center"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/Ans3"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="450dp"
+        android:background="@drawable/shape"
+        android:elevation="8dp"
+        android:gravity="center"
+        android:text="Barack Obama"
+        android:textAlignment="center"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/Ans4"
+        android:elevation="8dp"
+        android:gravity="center"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:background="@drawable/shape"
+        android:layout_marginLeft="235dp"
+        android:layout_marginTop="450dp"
+        android:layout_marginRight="20dp"
+        android:text="Bill Gates"
+        android:textAlignment="center"
+
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/Result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="620dp"
+        android:layout_marginLeft="140sp"
+        android:gravity="center"
+        android:textSize="25sp"/>
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/refresh"
+        android:layout_marginTop="620dp"
+        android:layout_marginLeft="45dp"
+        android:src="@drawable/ic_refresh"/>
+
+    <ImageView
+        android:id="@+id/hide"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="620dp"
+        android:layout_marginLeft="330dp"
+        android:src="@drawable/ic_iconmonstr_eye_8"/>
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/see"
+        android:layout_marginTop="620dp"
+        android:layout_marginLeft="330dp"
+        android:src="@drawable/ic_see"/>
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/next"
+        android:layout_marginTop="570dp"
+        android:layout_marginLeft="330dp"
+        android:src="@drawable/plus"/>
+
+</RelativeLayout>

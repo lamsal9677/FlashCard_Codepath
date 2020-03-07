@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Edit">
+
+
+    <EditText
+        android:id="@+id/EditQue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:hint="Enter a Question"
+        android:inputType="text"
+        android:importantForAutofill="no" />
+    <EditText
+        android:id="@+id/EditAnsCorrect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="110dp"
+        android:hint="Enter correct answer"
+        android:inputType="text"
+        android:importantForAutofill="no" />
+    <EditText
+        android:id="@+id/EditAnswerIncorrect1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="210dp"
+        android:hint="Enter Incorrect Answer"
+        android:inputType="text"
+        android:importantForAutofill="no" />
+    <EditText
+        android:id="@+id/EditAnswerIncorrect2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="310dp"
+        android:hint="Enter Incorrect Answer"
+        android:inputType="text"
+        android:importantForAutofill="no" />
+    <EditText
+        android:id="@+id/EditAnswerIncorrect3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="410dp"
+        android:hint="Enter Incorrect Answer"
+        android:inputType="text"
+        android:importantForAutofill="no" />
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginLeft="300dp"
+        app:srcCompat="@drawable/back"
+        android:contentDescription="TODO" />
+
+    <ImageView
+        android:id="@+id/save"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginLeft="30dp"
+        app:srcCompat="@drawable/save" />
+
+
+</RelativeLayout>
