@@ -1,6 +1,6 @@
 FlashCard App
 
-## Lab 1
+## Lab 1 & 2
 
 ### App Description
 
@@ -20,11 +20,11 @@ https://github.com/lamsal9677/CP_Week_2
 - [x] User can click on a ‘+’ button that takes the user to new ‘Add Card Screen’
 - [x] The 'Add Card Screen' has a cancel button to take the user back to the main screen
 - [x] User can enter and submit a Question and Answer through the 'Add Card Screen'
-- [ ] User will see the card they just created on the main screen when they press the 'Save Button'
+- [x] User will see the card they just created on the main screen when they press the 'Save Button'
 - [x] Push your progress to GitHub!
 
 ## Optional
-- [ ] Toggle the flashcard between the question side and the answer side
+- [x] Toggle the flashcard between the question side and the answer side
 - [x] Style the question and answer side of the card to better distinguish between the two sides
 - [x] Add selectable multiple choice answers beneath the card
 - [x] Change the background color of the multiple choice answers when clicked to indicate whether the question was answered correctly
