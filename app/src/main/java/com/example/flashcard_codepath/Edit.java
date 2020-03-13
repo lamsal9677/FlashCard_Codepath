@@ -25,7 +25,8 @@ public class Edit extends AppCompatActivity {
         findViewById(R.id.save).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent();
+
+                Intent i = new Intent(getApplicationContext(),MainActivity.class);
 
                 String EditQue = ((EditText) findViewById(R.id.EditQue)).getText().toString();
                 String EditAnsCorrect = ((EditText) findViewById(R.id.EditAnsCorrect)).getText().toString();
@@ -40,8 +41,7 @@ public class Edit extends AppCompatActivity {
                 i.putExtra("EditAnswerIncorrect2", EditAnswerIncorrect2);
                 i.putExtra("EditAnswerIncorrect3", EditAnswerIncorrect3);
 
-                setResult(RESULT_OK, i);
-                finish();
+                startActivity(i);
             }
         });
 

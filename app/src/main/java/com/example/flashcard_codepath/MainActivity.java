@@ -15,12 +15,37 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent i = getIntent();
+
+        String Que = i.getStringExtra("EditQue");
+        TextView Q = (TextView) findViewById(R.id.Que);
+        Q.setText(Que);
+
+        String Ans1 = i.getStringExtra("EditAnswerIncorrect1");
+        TextView A1 = (TextView) findViewById(R.id.Ans1);
+        A1.setText(Ans1);
+
+        String Ans2 = i.getStringExtra("EditAnsCorrect");
+        TextView A2 = (TextView) findViewById(R.id.Ans2);
+        A2.setText(Ans2);
+
+        String Ans3 = i.getStringExtra("EditAnswerIncorrect2");
+        TextView A3 = (TextView) findViewById(R.id.Ans3);
+        A3.setText(Ans3);
+
+        String Ans4 = i.getStringExtra("EditAnswerIncorrect3");
+        TextView A4 = (TextView) findViewById(R.id.Ans4);
+        A4.setText(Ans4);
 
         findViewById(R.id.hide).setVisibility(View.VISIBLE);
         findViewById(R.id.see).setVisibility(View.INVISIBLE);
 
-        TextView textView = (TextView) findViewById(R.id.Result);
-        textView.setText("Select one");
+        TextView text = (TextView) findViewById(R.id.Result);
+
+
+
+
+     text.setText("Select one");
 
         findViewById(R.id.hide).setOnClickListener(new View.OnClickListener() {
             @Override
