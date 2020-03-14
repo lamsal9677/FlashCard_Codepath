@@ -63,7 +63,8 @@
         android:layout_height="62dp"
         android:layout_marginTop="500dp"
         android:layout_marginLeft="30dp"
-        app:srcCompat="@drawable/save" />
+        app:srcCompat="@drawable/save"
+        android:onClick="onSubmit"/>
 
 
 </RelativeLayout>

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -13,40 +14,19 @@ public class MainActivity extends AppCompatActivity {
     FlashcardDatabase flashcardDatabase;
     List<Flashcard> allFlashcards;
     int currentCardDisplayedIndex = 0;
+    private final int REQUEST_CODE = 20;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
-        allFlashcards = flashcardDatabase.getAllCards();
-        flashcardDatabase = new FlashcardDatabase(getApplicationContext());
 
+        flashcardDatabase = new FlashcardDatabase(getApplicationContext());
+        allFlashcards = flashcardDatabase.getAllCards();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         allFlashcards = flashcardDatabase.getAllCards();
 
-        Intent i = getIntent();
-
-        String Que = i.getStringExtra("EditQue");
-        TextView Q = (TextView) findViewById(R.id.Que);
-        Q.setText(Que);
-
-        String Ans1 = i.getStringExtra("EditAnswerIncorrect1");
-        TextView A1 = (TextView) findViewById(R.id.Ans1);
-        A1.setText(Ans1);
-
-        String Ans2 = i.getStringExtra("EditAnsCorrect");
-        TextView A2 = (TextView) findViewById(R.id.Ans2);
-        A2.setText(Ans2);
-
-        String Ans3 = i.getStringExtra("EditAnswerIncorrect2");
-        TextView A3 = (TextView) findViewById(R.id.Ans3);
-        A3.setText(Ans3);
-
-        String Ans4 = i.getStringExtra("EditAnswerIncorrect3");
-        TextView A4 = (TextView) findViewById(R.id.Ans4);
-        A4.setText(Ans4);
-
-        flashcardDatabase.insertCard(new Flashcard(Que, Ans1));
+//        flashcardDatabase.insertCard(new Flashcard(Que, Ans1));
 
         findViewById(R.id.hide).setVisibility(View.VISIBLE);
         findViewById(R.id.see).setVisibility(View.INVISIBLE);
@@ -54,8 +34,9 @@ public class MainActivity extends AppCompatActivity {
         TextView text = (TextView) findViewById(R.id.Result);
 
         if (allFlashcards != null && allFlashcards.size() > 0) {
-            ((TextView) findViewById(R.id.Que)).setText(allFlashcards.get(0).getQuestion());
-            ((TextView) findViewById(R.id.Ans1)).setText(allFlashcards.get(0).getAnswer());
+            int lastQindex = allFlashcards.size() - 1;
+            ((TextView) findViewById(R.id.Que)).setText(allFlashcards.get(lastQindex).getQuestion());
+            ((TextView) findViewById(R.id.Ans1)).setText(allFlashcards.get(lastQindex).getAnswer());
         }
 
 
@@ -140,7 +121,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, Edit.class);
-                MainActivity.this.startActivityForResult(i, 100);
+                i.putExtra("mode", 2); // pass arbitrary data to launched activity
+                startActivityForResult(i, REQUEST_CODE);
             }
         });
 
@@ -169,5 +151,33 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // REQUEST_CODE is defined above
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
 
+            String Que = data.getStringExtra("EditQue");
+            TextView Q = (TextView) findViewById(R.id.Que);
+            Q.setText(Que);
+
+            String Ans1 = data.getStringExtra("EditAnswerIncorrect1");
+            TextView A1 = (TextView) findViewById(R.id.Ans1);
+            A1.setText(Ans1);
+
+            String Ans2 = data.getStringExtra("EditAnsCorrect");
+            TextView A2 = (TextView) findViewById(R.id.Ans2);
+            A2.setText(Ans2);
+
+            String Ans3 = data.getStringExtra("EditAnswerIncorrect2");
+            TextView A3 = (TextView) findViewById(R.id.Ans3);
+            A3.setText(Ans3);
+
+            String Ans4 = data.getStringExtra("EditAnswerIncorrect3");
+            TextView A4 = (TextView) findViewById(R.id.Ans4);
+            A4.setText(Ans4);
+
+            flashcardDatabase.insertCard(new Flashcard(Que, Ans2));
+            allFlashcards = flashcardDatabase.getAllCards();
+        }
+    }
 }
