@@ -9,7 +9,7 @@ https://github.com/lamsal9677/CP_Week_2
 
 ### App Walk-though
 
-<img src="https://imgur.com/rnPCCaA" width=200><br>
+<img src="https://i.imgur.com/rnPCCaA.mp4" width=200><br>
 
 ## Required
 - [x] Create New Project in Android Studio
