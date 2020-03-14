@@ -118,4 +118,21 @@
         android:layout_marginLeft="330dp"
         android:src="@drawable/plus"/>
 
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/trash"
+        android:layout_marginTop="570dp"
+        android:layout_marginLeft="45dp"
+        android:src="@drawable/trash"/>
+
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/nextt"
+        android:layout_marginTop="570dp"
+        android:layout_marginLeft="200dp"
+        android:src="@drawable/next"/>
+
 </RelativeLayout>

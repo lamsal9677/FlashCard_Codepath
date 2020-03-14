@@ -7,13 +7,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.List;
 
+public class MainActivity extends AppCompatActivity {
+    FlashcardDatabase flashcardDatabase;
+    List<Flashcard> allFlashcards;
+    int currentCardDisplayedIndex = 0;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
+        allFlashcards = flashcardDatabase.getAllCards();
+        flashcardDatabase = new FlashcardDatabase(getApplicationContext());
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        allFlashcards = flashcardDatabase.getAllCards();
 
         Intent i = getIntent();
 
@@ -37,12 +46,17 @@ public class MainActivity extends AppCompatActivity {
         TextView A4 = (TextView) findViewById(R.id.Ans4);
         A4.setText(Ans4);
 
+        flashcardDatabase.insertCard(new Flashcard(Que, Ans1));
+
         findViewById(R.id.hide).setVisibility(View.VISIBLE);
         findViewById(R.id.see).setVisibility(View.INVISIBLE);
 
         TextView text = (TextView) findViewById(R.id.Result);
 
-
+        if (allFlashcards != null && allFlashcards.size() > 0) {
+            ((TextView) findViewById(R.id.Que)).setText(allFlashcards.get(0).getQuestion());
+            ((TextView) findViewById(R.id.Ans1)).setText(allFlashcards.get(0).getAnswer());
+        }
 
 
      text.setText("Select one");
@@ -130,16 +144,30 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.nextt).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currentCardDisplayedIndex++;
+
+                // make sure we don't get an IndexOutOfBoundsError if we are viewing the last indexed card in our list
+                if (currentCardDisplayedIndex > allFlashcards.size() - 1) {
+                    currentCardDisplayedIndex = 0;
+                }
+
+                // set the question and answer TextViews with data from the database
+                ((TextView) findViewById(R.id.Que)).setText(allFlashcards.get(currentCardDisplayedIndex).getQuestion());
+                ((TextView) findViewById(R.id.Ans1)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
+            }
+        });
+
+        findViewById(R.id.trash).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                flashcardDatabase.deleteCard(((TextView) findViewById(R.id.Que)).getText().toString());
+                allFlashcards = flashcardDatabase.getAllCards();
+            }
+        });
+
     }
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent i) {
-//        if (requestCode == 100) { // this 100 needs to match the 100 we used when we called startActivityForResult!
-//            String EditQue = i.getExtras().getString("EditQue");
-//            String EditAnsCorrect = i.getExtras().getString("EditAnsCorrect");
-//            String EditAnswerIncorrect1 = i.getExtras().getString("EditAnswerIncorrect1");
-//            String EditAnswerIncorrect2 = i.getExtras().getString("EditAnswerIncorrect2");
-//            String EditAnswerIncorrect3 = i.getExtras().getString("EditAnswerIncorrect3");
-//        }
-//    }
 }
