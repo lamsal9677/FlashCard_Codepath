@@ -9,7 +9,7 @@ https://github.com/lamsal9677/CP_Week_2
 
 ### App Walk-though
 
-<img src="https://i.imgur.com/CkWZCnF.gif" width=200><br>
+App is having runtime errors
 
 ## Required
 - [x] Create New Project in Android Studio
@@ -45,5 +45,7 @@ https://github.com/lamsal9677/CP_Week_2
 - [ ] User can create flashcards with multiple answers and be able to browse through cards with multiple choice answers shown
 
 ### Old version of the app:
+<img src="https://i.imgur.com/CkWZCnF.gif" width=200><br>
 <img src="https://i.imgur.com/SBjCr8i.gif" width=200><br>
+
 
