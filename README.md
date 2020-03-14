@@ -9,7 +9,7 @@ https://github.com/lamsal9677/CP_Week_2
 
 ### App Walk-though
 
-App is having runtime errors
+https://imgur.com/rnPCCaA
 
 ## Required
 - [x] Create New Project in Android Studio
