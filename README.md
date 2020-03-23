@@ -9,7 +9,7 @@ https://github.com/lamsal9677/CP_Week_2
 
 ### App Walk-though
 
-App is having runtime errors
+<img src="https://i.imgur.com/EvdLwLP.gif" width=200><br>
 
 ## Required
 - [x] Create New Project in Android Studio
@@ -25,8 +25,8 @@ App is having runtime errors
 - [x] User will see the card they just created on the main screen when they press the 'Save Button'
 - [x] Push your progress to GitHub!
 
-- [ ] User can create a card and still see their created card when the app is relaunched.
-- [ ] User can create muliple cards and browse through all created cards
+- [x] User can create a card and still see their created card when the app is relaunched.
+- [x] User can create muliple cards and browse through all created cards
 
 ## Optional
 - [x] Toggle the flashcard between the question side and the answer side
@@ -39,7 +39,7 @@ App is having runtime errors
 - [ ] A notification is shown if the card was created successfully
 - [x] User can also enter multiple choice answers when creating a card
 - [x] App is further styled and customized!
-- [ ] User can delete a card and no longer see it in their deck anymore
+- [x] User can delete a card and no longer see it in their deck anymore
 - [ ] Flashcards are shown in random order instead of the order they were created in
 - [ ] User can edit a card and see the edit saved when they browse through their deck of cards
 - [ ] User can create flashcards with multiple answers and be able to browse through cards with multiple choice answers shown
