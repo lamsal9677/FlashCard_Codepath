@@ -26,8 +26,6 @@ public class MainActivity extends AppCompatActivity {
 
         allFlashcards = flashcardDatabase.getAllCards();
 
-//        flashcardDatabase.insertCard(new Flashcard(Que, Ans1));
-
         findViewById(R.id.hide).setVisibility(View.VISIBLE);
         findViewById(R.id.see).setVisibility(View.INVISIBLE);
 
@@ -36,7 +34,11 @@ public class MainActivity extends AppCompatActivity {
         if (allFlashcards != null && allFlashcards.size() > 0) {
             int lastQindex = allFlashcards.size() - 1;
             ((TextView) findViewById(R.id.Que)).setText(allFlashcards.get(lastQindex).getQuestion());
-            ((TextView) findViewById(R.id.Ans1)).setText(allFlashcards.get(lastQindex).getAnswer());
+            ((TextView) findViewById(R.id.Ans2)).setText(allFlashcards.get(lastQindex).getAnswer());
+            ((TextView) findViewById(R.id.Ans1)).setText(allFlashcards.get(lastQindex).getWrongAnswer1());
+            ((TextView) findViewById(R.id.Ans3)).setText(allFlashcards.get(lastQindex).getWrongAnswer2());
+
+
         }
 
 
@@ -117,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.next).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.next).setOnClickListener(new View.OnClickListener() {//add
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, Edit.class);
@@ -126,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.nextt).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.nextt).setOnClickListener(new View.OnClickListener() {//next card
             @Override
             public void onClick(View v) {
                 currentCardDisplayedIndex++;
@@ -138,11 +140,14 @@ public class MainActivity extends AppCompatActivity {
 
                 // set the question and answer TextViews with data from the database
                 ((TextView) findViewById(R.id.Que)).setText(allFlashcards.get(currentCardDisplayedIndex).getQuestion());
-                ((TextView) findViewById(R.id.Ans1)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
+                ((TextView) findViewById(R.id.Ans2)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
+                ((TextView) findViewById(R.id.Ans1)).setText(allFlashcards.get(currentCardDisplayedIndex).getWrongAnswer1());
+                ((TextView) findViewById(R.id.Ans3)).setText(allFlashcards.get(currentCardDisplayedIndex).getWrongAnswer2());
+
             }
         });
 
-        findViewById(R.id.trash).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.trash).setOnClickListener(new View.OnClickListener() {//delete
             @Override
             public void onClick(View v) {
                 flashcardDatabase.deleteCard(((TextView) findViewById(R.id.Que)).getText().toString());
@@ -151,9 +156,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // REQUEST_CODE is defined above
+
         if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
 
             String Que = data.getStringExtra("EditQue");
@@ -176,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
             TextView A4 = (TextView) findViewById(R.id.Ans4);
             A4.setText(Ans4);
 
-            flashcardDatabase.insertCard(new Flashcard(Que, Ans2));
+            flashcardDatabase.insertCard(new Flashcard(Que, Ans2, Ans1, Ans3));
             allFlashcards = flashcardDatabase.getAllCards();
         }
     }
