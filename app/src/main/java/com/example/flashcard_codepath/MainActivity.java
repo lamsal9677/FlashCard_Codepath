@@ -2,11 +2,17 @@ package com.example.flashcard_codepath;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.Animator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewAnimationUtils;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.plattysoft.leonids.ParticleSystem;
 
 import java.util.List;
 
@@ -15,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     List<Flashcard> allFlashcards;
     int currentCardDisplayedIndex = 0;
     private final int REQUEST_CODE = 20;
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +96,15 @@ public class MainActivity extends AppCompatActivity {
                 findViewById(R.id.Ans1).setBackgroundResource(R.drawable.incorrect);
                 TextView result = (TextView) findViewById(R.id.Result);
                 result.setText("Incorrect:(");
+                View answerSideView = findViewById(R.id.Result);
+                int cx = answerSideView.getWidth() / 2;
+                int cy = answerSideView.getHeight() / 2;
+                float finalRadius = (float) Math.hypot(cx, cy);
+                Animator anim = ViewAnimationUtils.createCircularReveal(answerSideView, cx, cy, 0f, finalRadius);
+                //questionSideView.setVisibility(View.INVISIBLE);
+                result.setVisibility(View.VISIBLE);
+                anim.setDuration(1000);
+                anim.start();
             }
         });
 
@@ -96,8 +112,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 findViewById(R.id.Ans2).setBackgroundResource(R.drawable.correct);
-                TextView textView = (TextView) findViewById(R.id.Result);
-                textView.setText("Correct!!");
+               TextView textView = (TextView) findViewById(R.id.Result);
+               textView.setText("Correct!!");
+                View answerSideView = findViewById(R.id.Result);
+                int cx = answerSideView.getWidth() / 2;
+                int cy = answerSideView.getHeight() / 2;
+                float finalRadius = (float) Math.hypot(cx, cy);
+                Animator anim = ViewAnimationUtils.createCircularReveal(answerSideView, cx, cy, 0f, finalRadius);
+                //questionSideView.setVisibility(View.INVISIBLE);
+                textView.setVisibility(View.VISIBLE);
+                anim.setDuration(1000);
+                anim.start();
+
+                new ParticleSystem(MainActivity.this, 100, R.drawable.confetti, 3000)
+                        .setSpeedRange(0.2f, 0.5f)
+                        .oneShot(findViewById(R.id.Ans2), 100);
             }
         });
 
@@ -107,6 +136,15 @@ public class MainActivity extends AppCompatActivity {
                 findViewById(R.id.Ans3).setBackgroundResource(R.drawable.incorrect);
                 TextView textView = (TextView) findViewById(R.id.Result);
                 textView.setText("Incorrect:(");
+                View answerSideView = findViewById(R.id.Result);
+                int cx = answerSideView.getWidth() / 2;
+                int cy = answerSideView.getHeight() / 2;
+                float finalRadius = (float) Math.hypot(cx, cy);
+                Animator anim = ViewAnimationUtils.createCircularReveal(answerSideView, cx, cy, 0f, finalRadius);
+                //questionSideView.setVisibility(View.INVISIBLE);
+                textView.setVisibility(View.VISIBLE);
+                anim.setDuration(1000);
+                anim.start();
             }
         });
 
@@ -116,6 +154,15 @@ public class MainActivity extends AppCompatActivity {
                 findViewById(R.id.Ans4).setBackgroundResource(R.drawable.incorrect);
                 TextView textView = (TextView) findViewById(R.id.Result);
                 textView.setText("Incorrect:(");
+                View answerSideView = findViewById(R.id.Result);
+                int cx = answerSideView.getWidth() / 2;
+                int cy = answerSideView.getHeight() / 2;
+                float finalRadius = (float) Math.hypot(cx, cy);
+                Animator anim = ViewAnimationUtils.createCircularReveal(answerSideView, cx, cy, 0f, finalRadius);
+                //questionSideView.setVisibility(View.INVISIBLE);
+                textView.setVisibility(View.VISIBLE);
+                anim.setDuration(1000);
+                anim.start();
             }
         });
 
@@ -125,6 +172,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(MainActivity.this, Edit.class);
                 i.putExtra("mode", 2); // pass arbitrary data to launched activity
                 startActivityForResult(i, REQUEST_CODE);
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
             }
         });
 
@@ -132,18 +180,42 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 currentCardDisplayedIndex++;
-
+                final Animation leftOutAnim = AnimationUtils.loadAnimation(v.getContext(), R.anim.left_out);
+                final Animation rightInAnim = AnimationUtils.loadAnimation(v.getContext(), R.anim.right_in);
                 // make sure we don't get an IndexOutOfBoundsError if we are viewing the last indexed card in our list
                 if (currentCardDisplayedIndex > allFlashcards.size() - 1) {
                     currentCardDisplayedIndex = 0;
                 }
+                findViewById(R.id.Que).startAnimation(leftOutAnim);
+                findViewById(R.id.Ans1).startAnimation(leftOutAnim);
+                findViewById(R.id.Ans2).startAnimation(leftOutAnim);
+                findViewById(R.id.Ans3).startAnimation(leftOutAnim);
+                leftOutAnim.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+                        // this method is called when the animation first starts
+                        ((TextView) findViewById(R.id.Ans2)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
+                        ((TextView) findViewById(R.id.Ans1)).setText(allFlashcards.get(currentCardDisplayedIndex).getWrongAnswer1());
+                        ((TextView) findViewById(R.id.Ans3)).setText(allFlashcards.get(currentCardDisplayedIndex).getWrongAnswer2());
+                    }
 
-                // set the question and answer TextViews with data from the database
-                ((TextView) findViewById(R.id.Que)).setText(allFlashcards.get(currentCardDisplayedIndex).getQuestion());
-                ((TextView) findViewById(R.id.Ans2)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
-                ((TextView) findViewById(R.id.Ans1)).setText(allFlashcards.get(currentCardDisplayedIndex).getWrongAnswer1());
-                ((TextView) findViewById(R.id.Ans3)).setText(allFlashcards.get(currentCardDisplayedIndex).getWrongAnswer2());
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        // this method is called when the animation is finished playing
 
+                        findViewById(R.id.Que).startAnimation(rightInAnim);
+                        findViewById(R.id.Ans1).startAnimation(rightInAnim);
+                        findViewById(R.id.Ans2).startAnimation(rightInAnim);
+                        findViewById(R.id.Ans3).startAnimation(rightInAnim);
+
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+                        // we don't need to worry about this method
+                    }
+                });
             }
         });
 
