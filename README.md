@@ -1,6 +1,6 @@
-FlashCard App
+Codepath FlashCard App
 
-## Lab 1, 2, and 3
+## Lab 1, 2, 3, and 4
 
 ### App Description
 
@@ -9,7 +9,7 @@ https://github.com/lamsal9677/CP_Week_2
 
 ### App Walk-though
 
-<img src="https://i.imgur.com/EvdLwLP.gif" width=200><br>
+<img src=https://i.imgur.com/eU9F5r0.gif width=200><br>
 
 ## Required
 - [x] Create New Project in Android Studio
@@ -28,6 +28,11 @@ https://github.com/lamsal9677/CP_Week_2
 - [x] User can create a card and still see their created card when the app is relaunched.
 - [x] User can create muliple cards and browse through all created cards
 
+
+- [x] User sees a transition animation when going from the main screen to the add card screen.
+- [x] User sees a reveal animation when the flashcard is tapped and the answer is shown
+- [x] User sees flashcards animating in / out when the 'next' button is tapped
+
 ## Optional
 - [x] Toggle the flashcard between the question side and the answer side
 - [x] Style the question and answer side of the card to better distinguish between the two sides
@@ -41,10 +46,15 @@ https://github.com/lamsal9677/CP_Week_2
 - [x] App is further styled and customized!
 - [x] User can delete a card and no longer see it in their deck anymore
 - [ ] Flashcards are shown in random order instead of the order they were created in
-- [ ] User can edit a card and see the edit saved when they browse through their deck of cards
-- [ ] User can create flashcards with multiple answers and be able to browse through cards with multiple choice answers shown
+- [x] User can edit a card and see the edit saved when they browse through their deck of cards
+- [x] User can create flashcards with multiple answers and be able to browse through cards with multiple choice answers shown
+- [x] Extra styling is added!
+- [ ] User sees a countdown timer for each question
+- [ ] User sees a 'card flip' animation when the card is tapped
+- [x] User sees a celebration animation with confetti when they answer a question correctly
 
 ### Old version of the app:
+<img src="https://i.imgur.com/EvdLwLP.gif" width=200>
 <img src="https://i.imgur.com/CkWZCnF.gif" width=200><br>
 <img src="https://i.imgur.com/SBjCr8i.gif" width=200><br>
 
